@@ -30,8 +30,10 @@ class _MyAppState extends State<MyApp> {
         this.bearing = location.bearing.toString();
         this.speed = location.speed.toString();
       });
+      var time = DateTime.now();
 
       print("""\n
+      Time:      $time
       Latitude:  $latitude
       Longitude: $longitude
       Altitude: $altitude
@@ -60,7 +62,7 @@ class _MyAppState extends State<MyApp> {
               locationData("Speed: " + speed),
               RaisedButton(
                   onPressed: () {
-                    BackgroundLocation.startLocationService();
+                    BackgroundLocation.startLocationService(timespan: 2000);
                   },
                   child: Text("Start Location Service")),
               RaisedButton(

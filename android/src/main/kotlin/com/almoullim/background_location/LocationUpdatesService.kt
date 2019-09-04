@@ -35,12 +35,17 @@ class LocationUpdatesService : Service() {
         internal val ACTION_BROADCAST = "$PACKAGE_NAME.broadcast"
         internal val EXTRA_LOCATION = "$PACKAGE_NAME.location"
         private val EXTRA_STARTED_FROM_NOTIFICATION = "$PACKAGE_NAME.started_from_notification"
-        private val UPDATE_INTERVAL_IN_MILLISECONDS: Long = 10000
-        private val FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS = UPDATE_INTERVAL_IN_MILLISECONDS / 2
+        private var UPDATE_INTERVAL_IN_MILLISECONDS: Long = 10000
+        private var FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS = UPDATE_INTERVAL_IN_MILLISECONDS / 2
         private val NOTIFICATION_ID = 12345678
         private lateinit var broadcastReceiver: BroadcastReceiver
 
         private val STOP_SERVICE = "stop_service"
+
+        public fun SetUpdateInterval(timespan_ms: Int){
+            UPDATE_INTERVAL_IN_MILLISECONDS = timespan_ms.toLong()
+            FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS = UPDATE_INTERVAL_IN_MILLISECONDS / 2
+        }
     }
 
 

@@ -77,6 +77,10 @@ class BackgroundLocationPlugin() : MethodCallHandler, PluginRegistry.RequestPerm
 
             }
             call.method == "start_location_service" -> {
+                var timespan = call.argument<Int>("timespan")
+                if(timespan != null){
+                    LocationUpdatesService.SetUpdateInterval(timespan!!);
+                }
                 LocalBroadcastManager.getInstance(activity).registerReceiver(myReceiver!!,
                         IntentFilter(LocationUpdatesService.ACTION_BROADCAST))
                 if (!mBound) {

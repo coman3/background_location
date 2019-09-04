@@ -16,8 +16,10 @@ class BackgroundLocation {
   }
 
   /// Start receiving location updated
-  static startLocationService() {
-    _channel.invokeMapMethod("start_location_service");
+  static startLocationService({int timespan = 10000}) {
+    _channel.invokeMapMethod("start_location_service", {
+      "timespan": timespan
+    });
   }
 
   /// Get the current location once.
